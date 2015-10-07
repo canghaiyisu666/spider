@@ -30,17 +30,17 @@ public class LoginTest {
 		HttpClientBuilder builder = HttpClients.custom();
 		CloseableHttpClient client = builder.build();
 		
-		HttpPost httpPost = new HttpPost("http://svn.jundie.net/user/login");
+		HttpPost httpPost = new HttpPost("http://svn.jundie.net/user/login");//登录时的请求地址
 		List<BasicNameValuePair> parameters = new ArrayList<BasicNameValuePair>();
-		parameters.add(new BasicNameValuePair("uid", "crxy"));
-		parameters.add(new BasicNameValuePair("pwd", "www.crxy.cn"));
+		parameters.add(new BasicNameValuePair("uid", "crxy"));//登录的帐号
+		parameters.add(new BasicNameValuePair("pwd", "www.crxy.cn"));//登录的密码
 		HttpEntity entity = new UrlEncodedFormEntity(parameters );
 		httpPost.setEntity(entity);
 		
 		CloseableHttpResponse response = client.execute(httpPost);
 		
 		int statusCode = response.getStatusLine().getStatusCode();
-		if(statusCode==302){
+		if(statusCode==302){//根据条件判断登录成功
 			Header[] headers = response.getHeaders("location");
 			String redirectUrl = "";
 			if(headers.length>0){

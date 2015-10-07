@@ -23,8 +23,8 @@ public class HttpProxyTest {
 	@Test
 	public void test() throws Exception {
 		HttpClientBuilder builder = HttpClients.custom();
-		// TODO 下面的代理IP和端口就需要从代理Ip库中读取
-		String ip = "202.194.101.150";
+		//下面的代理IP和端口就需要从代理Ip库中读取，代理IP也可使用爬虫实时爬取：http://www.xicidaili.com/
+		String ip = "119.188.94.145";
 		int port = 80;
 		HttpHost proxy = new HttpHost(ip, port);
 		CloseableHttpClient client = builder.setProxy(proxy ).build();
